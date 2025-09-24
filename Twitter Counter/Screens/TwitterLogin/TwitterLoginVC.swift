@@ -10,14 +10,16 @@ import UIKit
 class TwitterLoginVC: UIViewController {
     @IBOutlet weak var twitterLoginBtn: UIButton!
     
+    @IBOutlet weak var twitterLoginView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        twitterLoginBtn.layer.cornerRadius = 12
+        twitterLoginView.layer.cornerRadius = 12
+        
     }
     @IBAction func loginTapped(_ sender: UIButton) {
         twitterLogin()
     }
-    func twitterLogin(){
+   private func twitterLogin(){
         TwitterClient.shared.login { success, credential in
             if success {
                 self.showToast(message: "Login Success ✅", bgColor: UIColor(named: "GreenColor")!)
@@ -26,7 +28,6 @@ class TwitterLoginVC: UIViewController {
                 self.showToast(message: "Login Failed ❌", bgColor: .red)
             }
         }
-        
     }
     private func goToTwitterHomeVC(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -34,6 +35,5 @@ class TwitterLoginVC: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-
 }
 

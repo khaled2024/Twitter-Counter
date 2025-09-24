@@ -282,31 +282,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD3-9p-J7g">
-                                <rect key="frame" x="117" y="426" width="180" height="44"/>
-                                <color key="backgroundColor" name="BlueColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="6iw-tC-9oM"/>
-                                    <constraint firstAttribute="width" constant="180" id="nTo-dQ-Rg7"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Login With Twitter">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="15" name="DINNextLTArabic-Medium"/>
-                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="loginTapped:" destination="vva-Ci-6EJ" eventType="touchUpInside" id="rOT-yE-eak"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter logo" translatesAutoresizingMaskIntoConstraints="NO" id="U78-KS-gXF">
                                 <rect key="frame" x="132" y="236" width="150" height="150"/>
                                 <constraints>
@@ -314,19 +289,70 @@
                                     <constraint firstAttribute="height" constant="150" id="pFG-Yh-vMU"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtI-XS-wzj">
+                                <rect key="frame" x="97" y="428" width="220" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwitterImage" translatesAutoresizingMaskIntoConstraints="NO" id="gnp-Rv-JPP">
+                                        <rect key="frame" x="15" y="5" width="30" height="30"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="9Zm-CP-9p3"/>
+                                            <constraint firstAttribute="height" constant="30" id="Cql-vL-Gn2"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wA-T8-bhE">
+                                        <rect key="frame" x="61" y="5.6666666666666856" width="144" height="25"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Sign In With Twitter">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="17" name="DINNextLTArabic-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD3-9p-J7g">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <attributedString key="attributedTitle"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="vva-Ci-6EJ" eventType="touchUpInside" id="rOT-yE-eak"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="BlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4wA-T8-bhE" secondAttribute="trailing" constant="15" id="AK8-md-PXB"/>
+                                    <constraint firstItem="gnp-Rv-JPP" firstAttribute="leading" secondItem="jtI-XS-wzj" secondAttribute="leading" constant="15" id="Dtn-Pf-URO"/>
+                                    <constraint firstItem="4wA-T8-bhE" firstAttribute="centerY" secondItem="jtI-XS-wzj" secondAttribute="centerY" constant="-2" id="NDL-Jh-Abc"/>
+                                    <constraint firstItem="gnp-Rv-JPP" firstAttribute="centerY" secondItem="jtI-XS-wzj" secondAttribute="centerY" id="Oc1-0d-vsY"/>
+                                    <constraint firstItem="SD3-9p-J7g" firstAttribute="top" secondItem="jtI-XS-wzj" secondAttribute="top" id="XVV-cc-AGA"/>
+                                    <constraint firstAttribute="bottom" secondItem="SD3-9p-J7g" secondAttribute="bottom" id="fge-fG-yo3"/>
+                                    <constraint firstAttribute="width" constant="220" id="qkb-o3-aZ7"/>
+                                    <constraint firstItem="SD3-9p-J7g" firstAttribute="leading" secondItem="jtI-XS-wzj" secondAttribute="leading" id="vZX-Xd-Fgy"/>
+                                    <constraint firstAttribute="trailing" secondItem="SD3-9p-J7g" secondAttribute="trailing" id="xRK-KL-iGI"/>
+                                    <constraint firstAttribute="height" constant="40" id="xxu-Lt-MMG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hgP-jY-ywF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SD3-9p-J7g" firstAttribute="centerX" secondItem="2ln-CL-cEV" secondAttribute="centerX" id="LAM-9D-Le2"/>
-                            <constraint firstItem="SD3-9p-J7g" firstAttribute="centerY" secondItem="2ln-CL-cEV" secondAttribute="centerY" id="N2W-Wp-NiU"/>
+                            <constraint firstItem="U78-KS-gXF" firstAttribute="top" secondItem="hgP-jY-ywF" secondAttribute="top" constant="148" id="XdV-dn-e4U"/>
+                            <constraint firstItem="jtI-XS-wzj" firstAttribute="centerX" secondItem="2ln-CL-cEV" secondAttribute="centerX" id="ZXo-v4-1Fq"/>
+                            <constraint firstItem="jtI-XS-wzj" firstAttribute="centerY" secondItem="2ln-CL-cEV" secondAttribute="centerY" id="sKn-15-SWa"/>
                             <constraint firstItem="U78-KS-gXF" firstAttribute="centerX" secondItem="2ln-CL-cEV" secondAttribute="centerX" id="xD9-qH-vAy"/>
-                            <constraint firstItem="SD3-9p-J7g" firstAttribute="top" secondItem="U78-KS-gXF" secondAttribute="bottom" constant="40" id="yfz-Ty-MiO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HaU-9O-cdg"/>
                     <connections>
                         <outlet property="twitterLoginBtn" destination="SD3-9p-J7g" id="CmP-9L-3BD"/>
+                        <outlet property="twitterLoginView" destination="jtI-XS-wzj" id="CRQ-SN-itp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pau-zq-vH3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -354,6 +380,7 @@
     </scenes>
     <resources>
         <image name="Twitter logo" width="240" height="240"/>
+        <image name="TwitterImage" width="240" height="240"/>
         <image name="arrow-right" width="96" height="96"/>
         <namedColor name="BlueColor">
             <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
