@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA4E42852E848A8600092466 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E42842E848A8600092466 /* AppConstants.swift */; };
+		EA4E42872E848BFF00092466 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EA4E42862E848BFF00092466 /* Config.xcconfig */; };
 		EA9700182E841811003DD3AB /* TwitterLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9700172E841811003DD3AB /* TwitterLoginVC.swift */; };
 		EAD030C92E813AD8000F40A2 /* Extension+UiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD030C82E813AD8000F40A2 /* Extension+UiView.swift */; };
 		EAD030CB2E813C3B000F40A2 /* Extension+UiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD030CA2E813C3B000F40A2 /* Extension+UiViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA4E42842E848A8600092466 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		EA4E42862E848BFF00092466 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		EA9700172E841811003DD3AB /* TwitterLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLoginVC.swift; sourceTree = "<group>"; };
 		EAD030C82E813AD8000F40A2 /* Extension+UiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UiView.swift"; sourceTree = "<group>"; };
 		EAD030CA2E813C3B000F40A2 /* Extension+UiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UiViewController.swift"; sourceTree = "<group>"; };
@@ -57,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA4E42832E848A7800092466 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				EA4E42842E848A8600092466 /* AppConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		EA9700162E8417F8003DD3AB /* TwitterLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +157,7 @@
 		EAD5C4AE2E800B0800EDE392 /* Twitter Counter */ = {
 			isa = PBXGroup;
 			children = (
+				EA4E42832E848A7800092466 /* Constants */,
 				EAD030DD2E8182E2000F40A2 /* Service */,
 				EAD030D22E8146A8000F40A2 /* Storyboards */,
 				EAD030C72E813ABF000F40A2 /* Extensions */,
@@ -153,6 +166,7 @@
 				EAD5C4B62E800B0C00EDE392 /* Screens */,
 				EAD5C4A72E800B0800EDE392 /* Assets.xcassets */,
 				EAD5C4A82E800B0800EDE392 /* Info.plist */,
+				EA4E42862E848BFF00092466 /* Config.xcconfig */,
 			);
 			path = "Twitter Counter";
 			sourceTree = "<group>";
@@ -246,6 +260,7 @@
 				EAD5C4B42E800B0800EDE392 /* LaunchScreen.storyboard in Resources */,
 				EAD030D12E81402A000F40A2 /* DINNextLTArabic-Medium-4.ttf in Resources */,
 				EAD5C4B52E800B0800EDE392 /* Main.storyboard in Resources */,
+				EA4E42872E848BFF00092466 /* Config.xcconfig in Resources */,
 				EAD030CF2E813F24000F40A2 /* DINNextLTArabic-Bold-4.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +281,7 @@
 				EAD030DA2E817EDC000F40A2 /* TwitterHomeViewModel.swift in Sources */,
 				EAD030CD2E813EA9000F40A2 /* Extension+UiFont.swift in Sources */,
 				EAD5C4B12E800B0800EDE392 /* TwitterHomeViewController.swift in Sources */,
+				EA4E42852E848A8600092466 /* AppConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +309,7 @@
 /* Begin XCBuildConfiguration section */
 		EAD5C49F2E80098700EDE392 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA4E42862E848BFF00092466 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,6 +338,7 @@
 		};
 		EAD5C4A02E80098700EDE392 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA4E42862E848BFF00092466 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -349,6 +367,7 @@
 		};
 		EAD5C4A12E80098700EDE392 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA4E42862E848BFF00092466 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -412,6 +431,7 @@
 		};
 		EAD5C4A22E80098700EDE392 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA4E42862E848BFF00092466 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

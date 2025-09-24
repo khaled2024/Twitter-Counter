@@ -1,0 +1,5 @@
+TWITTER_API_KEY = V7Ir272NnswSCCCZMxilc8Tlr
+TWITTER_API_SECRET = ibTcW3DbZE0iE9YK5L47Dj8gFjkOnA7WZDfA7lqCNfeydXQquT
+TWITTER_REQUEST_TOKEN_URL = https:/$()/api.twitter.com/oauth/request_token
+TWITTER_AUTHORIZE_URL = https:/$()/api.twitter.com/oauth/authorize
+TWITTER_ACCESS_TOKEN_URL = https:/$()/api.twitter.com/oauth/access_token

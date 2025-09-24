@@ -10,16 +10,42 @@ import UIKit
 import OAuthSwift
 
 class TwitterClient {
-    let oauthswift: OAuth1Swift
-    init() {
+    static let shared = TwitterClient()
+    // MARK: - Properties
+    private let apiKey: String
+    private let apiSecret: String
+    private let requestTokenUrl: String
+    private let authorizeUrl: String
+    private let accessTokenUrl: String
+    
+    var oauthswift: OAuth1Swift!
+    
+    private init() {
+        self.apiKey = Bundle.main.object(forInfoDictionaryKey: AppConstants.TWITTER_API_KEY) as? String ?? ""
+        self.apiSecret = Bundle.main.object(forInfoDictionaryKey: AppConstants.TWITTER_API_SECRET) as? String ?? ""
+        self.requestTokenUrl = Bundle.main.object(forInfoDictionaryKey: AppConstants.TWITTER_REQUEST_TOKEN_URL) as? String ?? ""
+        self.authorizeUrl = Bundle.main.object(forInfoDictionaryKey: AppConstants.TWITTER_AUTHORIZE_URL) as? String ?? ""
+        self.accessTokenUrl = Bundle.main.object(forInfoDictionaryKey: AppConstants.TWITTER_ACCESS_TOKEN_URL) as? String ?? ""
+        
+        // Initialize OAuth
         oauthswift = OAuth1Swift(
-            consumerKey:    "V7Ir272NnswSCCCZMxilc8Tlr",      // API Key
-            consumerSecret: "ibTcW3DbZE0iE9YK5L47Dj8gFjkOnA7WZDfA7lqCNfeydXQquT", // API Secret
-            requestTokenUrl: "https://api.twitter.com/oauth/request_token",
-            authorizeUrl:    "https://api.twitter.com/oauth/authorize",
-            accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
+            consumerKey:    apiKey,
+            consumerSecret: apiSecret,
+            requestTokenUrl: requestTokenUrl,
+            authorizeUrl:    authorizeUrl,
+            accessTokenUrl:  accessTokenUrl
         )
+        
+        // Debug
+        print("apiKey: \(apiKey)")
+        print("apiSecret: \(apiSecret)")
+        print("requestTokenUrl: \(requestTokenUrl)")
+        print("authorizeUrl: \(authorizeUrl)")
+        print("accessTokenUrl: \(accessTokenUrl)")
     }
+    
+    
+    // MARK: - Helper Methods
     func setUserTokens(token: String, secret: String) {
         oauthswift.client.credential.oauthToken = token
         oauthswift.client.credential.oauthTokenSecret = secret
@@ -27,9 +53,9 @@ class TwitterClient {
     
     // post tweet
     func postTweet(text: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let url = "https://api.twitter.com/2/tweets"
-        print("🔑 token:", oauthswift.client.credential.oauthToken)
-        print("🔑 secret:", oauthswift.client.credential.oauthTokenSecret)
+        let url = AppConstants.TwitterAPIUrl
+        print("token:", oauthswift.client.credential.oauthToken)
+        print("secret:", oauthswift.client.credential.oauthTokenSecret)
         oauthswift.client.post(
             url,
             parameters: ["text": text],
@@ -49,24 +75,24 @@ class TwitterClient {
             }
         }
     }
-
+    
     // login
     func login(completion: @escaping (Bool, OAuthSwiftCredential) -> Void) {
-        
-        oauthswift.authorize(withCallbackURL: "twittercounter://auth/callback") { result in
+        oauthswift.authorize(withCallbackURL: AppConstants.URLSchemaCallback) { result in
             switch result {
             case .success(let (credential, _, _)):
                 completion(true, credential)
                 
                 self.setUserTokens(token: credential.oauthToken, secret: credential.oauthTokenSecret)
-                UserDefaults.standard.set(credential.oauthToken, forKey: "twitterAccessToken")
-                UserDefaults.standard.set(credential.oauthTokenSecret, forKey: "twitterAccessSecret")
+                UserDefaults.standard.set(credential.oauthToken, forKey: AppConstants.TwitterAccessToken)
+                UserDefaults.standard.set(credential.oauthTokenSecret, forKey: AppConstants.TwitterAccessSecret)
                 
             case .failure:
                 completion(false, OAuthSwiftCredential(consumerKey: "", consumerSecret: ""))
             }
         }
     }
+    // twitterCount
     func twitterCount(_ text: String) -> Int {
         var count = 0
         let regex = try! NSRegularExpression(pattern: "https?://\\S+")
@@ -92,8 +118,4 @@ class TwitterClient {
         
         return count
     }
-    
-    
-    
-    
 }

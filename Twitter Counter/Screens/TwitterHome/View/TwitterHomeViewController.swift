@@ -21,14 +21,12 @@ class TwitterHomeViewController: UIViewController {
     @IBOutlet weak var typedLabel: UILabel!
     @IBOutlet weak var remainingLabel: UILabel!
     
-    var twitterClient: TwitterClient!
-    var vm: TwitterHomeViewModel!
+    let vm = TwitterHomeViewModel()
     var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm = TwitterHomeViewModel(client: twitterClient)
         setUp()
         twitterTextView.delegate = self
         updateCharacterCount("")
@@ -108,10 +106,7 @@ class TwitterHomeViewController: UIViewController {
         postTweet()
     }
     @IBAction func logoutTapped(_ sender: UIButton) {
-        UserDefaults.standard.removeObject(forKey: "twitterAccessToken")
-        UserDefaults.standard.removeObject(forKey: "twitterAccessSecret")
-        twitterClient.setUserTokens(token: "", secret: "")
-        self.navigationController?.popViewController(animated: true)
+        vm.logout()
     }
 }
 // MARK: - TextView

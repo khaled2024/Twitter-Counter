@@ -9,7 +9,6 @@ import UIKit
 
 class TwitterLoginVC: UIViewController {
     @IBOutlet weak var twitterLoginBtn: UIButton!
-    let twitterClient = TwitterClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,20 +18,19 @@ class TwitterLoginVC: UIViewController {
         twitterLogin()
     }
     func twitterLogin(){
-        twitterClient.login { success, credential in
+        TwitterClient.shared.login { success, credential in
             if success {
                 self.showToast(message: "Login Success ✅", bgColor: UIColor(named: "GreenColor")!)
-                self.goToTwitterHomeVC(with: self.twitterClient)
+                self.goToTwitterHomeVC()
             } else {
                 self.showToast(message: "Login Failed ❌", bgColor: .red)
             }
         }
         
     }
-    private func goToTwitterHomeVC(with client: TwitterClient){
+    private func goToTwitterHomeVC(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "TwitterHomeViewController") as? TwitterHomeViewController {
-            vc.twitterClient = client
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

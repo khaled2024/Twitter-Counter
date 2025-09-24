@@ -13,12 +13,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
 
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-           if let url = URLContexts.first?.url {
-               OAuthSwift.handle(url: url)
-           }
-       }
+    func scene(_ scene: UIScene,
+               willConnectTo session: UISceneSession,
+               options connectionOptions: UIScene.ConnectionOptions) {
 
+        guard let windowScene = scene as? UIWindowScene else { return }
+        window = UIWindow(windowScene: windowScene)
+
+        // جِب التوكنز من UserDefaults
+        let token = UserDefaults.standard.string(forKey: "twitterAccessToken")
+        let secret = UserDefaults.standard.string(forKey: "twitterAccessSecret")
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        if let token = token,
+           let secret = secret,
+           !token.isEmpty, !secret.isEmpty {
+            // ✅ المستخدم مسجّل → روح للـ Home
+            let homeVC = storyboard.instantiateViewController(
+                withIdentifier: "TwitterHomeViewController"
+            ) as! TwitterHomeViewController
+
+            // مرر التوكنز للـ Client Singleton
+            TwitterClient.shared.setUserTokens(token: token, secret: secret)
+
+            window?.rootViewController = UINavigationController(rootViewController: homeVC)
+        } else {
+            // ❌ مفيش تسجيل → روح للـ Login
+            let loginVC = storyboard.instantiateViewController(
+                withIdentifier: "TwitterLoginVC"
+            ) as! TwitterLoginVC
+
+            window?.rootViewController = UINavigationController(rootViewController: loginVC)
+        }
+
+        window?.makeKeyAndVisible()
+    }
+
+    // دي عشان نمسك الـ callback اللي بيرجع من تويتر بعد الـ login
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            print("🔗 رجعنا من تويتر بالـ callback: \(url)")
+            OAuthSwift.handle(url: url)
+        }
+    }
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

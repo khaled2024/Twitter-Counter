@@ -7,10 +7,8 @@
 
 import UIKit
 class TwitterHomeViewModel{
-    private let client: TwitterClient
-       init(client: TwitterClient) {
-           self.client = client
-       }
+    private let client = TwitterClient.shared
+      
     private let twitterLimit = 280
     
     func countCharacters(_ text: String) -> (count: Int, remaining: Int, isValid: Bool) {
@@ -32,6 +30,20 @@ class TwitterHomeViewModel{
         client.postTweet(text: text) { result in
             completion(result)
             print(result)
+        }
+    }
+    func logout(){
+        UserDefaults.standard.removeObject(forKey: "twitterAccessToken")
+        UserDefaults.standard.removeObject(forKey: "twitterAccessSecret")
+        TwitterClient.shared.setUserTokens(token: "", secret: "")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "TwitterLoginVC") as! TwitterLoginVC
+        let nav = UINavigationController(rootViewController: loginVC)
+        
+        if let sceneDelegate = UIApplication.shared.connectedScenes
+            .first?.delegate as? SceneDelegate {
+            sceneDelegate.window?.rootViewController = nav
         }
     }
 }
