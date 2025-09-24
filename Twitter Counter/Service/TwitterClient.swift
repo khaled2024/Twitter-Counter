@@ -57,7 +57,11 @@ class TwitterClient {
             switch result {
             case .success(let (credential, _, _)):
                 completion(true, credential)
+                
                 self.setUserTokens(token: credential.oauthToken, secret: credential.oauthTokenSecret)
+                UserDefaults.standard.set(credential.oauthToken, forKey: "twitterAccessToken")
+                UserDefaults.standard.set(credential.oauthTokenSecret, forKey: "twitterAccessSecret")
+                
             case .failure:
                 completion(false, OAuthSwiftCredential(consumerKey: "", consumerSecret: ""))
             }

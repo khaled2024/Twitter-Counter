@@ -21,10 +21,6 @@ class TwitterLoginVC: UIViewController {
     func twitterLogin(){
         twitterClient.login { success, credential in
             if success {
-                self.twitterClient.setUserTokens(
-                    token: credential.oauthToken,
-                    secret: credential.oauthTokenSecret
-                )
                 self.showToast(message: "Login Success ✅", bgColor: UIColor(named: "GreenColor")!)
                 self.goToTwitterHomeVC(with: self.twitterClient)
             } else {

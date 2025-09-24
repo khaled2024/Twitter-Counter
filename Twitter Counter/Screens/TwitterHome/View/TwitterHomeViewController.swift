@@ -58,7 +58,6 @@ class TwitterHomeViewController: UIViewController {
         activityIndicator.color = UIColor(named: "BlueColor")
         view.addSubview(activityIndicator)
     }
-    
     private func postTweet(){
         guard let text = twitterTextView.text, !text.isEmpty else { return }
         activityIndicator.startAnimating()
@@ -79,7 +78,6 @@ class TwitterHomeViewController: UIViewController {
             }
         }
     }
-
     private func updateCharacterCount(_ text: String) {
         let result = vm.countCharacters(text)
         
@@ -97,7 +95,6 @@ class TwitterHomeViewController: UIViewController {
         }
     }
     // MARK: - Actions
-    
     @IBAction func copyTapped(_ sender: UIButton) {
         vm.copyText(twitterTextView.text)
         self.showToast(message: "Copied Successfully🎉", bgColor: UIColor(named: "GreenColor")!)
@@ -109,6 +106,12 @@ class TwitterHomeViewController: UIViewController {
     }
     @IBAction func postTapped(_ sender: UIButton) {
         postTweet()
+    }
+    @IBAction func logoutTapped(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "twitterAccessToken")
+        UserDefaults.standard.removeObject(forKey: "twitterAccessSecret")
+        twitterClient.setUserTokens(token: "", secret: "")
+        self.navigationController?.popViewController(animated: true)
     }
 }
 // MARK: - TextView
