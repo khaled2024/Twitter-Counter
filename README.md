@@ -1,5 +1,5 @@
-Twitter Counter App
-📌 Overview
+## Twitter Counter App
+##📌 Overview
 
 This project was developed as part of the Mobile Assessment Task.
 The app allows users to:
@@ -10,7 +10,7 @@ Authenticate with Twitter (OAuth 1.0a User Context).
 
 Post tweets directly to their own account after authorization.
 
-✨ Features
+##✨ Features
 
 Twitter Character Counter: Counts characters according to Twitter rules (URLs = 23 chars, emojis may count as 2, etc.).
 
@@ -80,8 +80,8 @@ Run the app on a simulator or device.
 
 🙋 Author
 
-Developed by [Your Name]
+Developed by [Khaled Hussien Khalifa]
 
-Email: [Your Email]
+Email: [anakhaled209@gmail.com]
 
-LinkedIn: [Your LinkedIn]
+LinkedIn: [https://www.linkedin.com/in/khaled-hussien-a961391a6/]
