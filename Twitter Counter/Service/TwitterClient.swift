@@ -10,23 +10,26 @@ import UIKit
 import OAuthSwift
 
 class TwitterClient {
-
-    let oauthswift = OAuth1Swift(
-        consumerKey:    "V7Ir272NnswSCCCZMxilc8Tlr",      // API Key
-        consumerSecret: "ibTcW3DbZE0iE9YK5L47Dj8gFjkOnA7WZDfA7lqCNfeydXQquT", // API Secret
-        requestTokenUrl: "https://api.twitter.com/oauth/request_token",
-        authorizeUrl:    "https://api.twitter.com/oauth/authorize",
-        accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
-    )
-    
+    let oauthswift: OAuth1Swift
     init() {
-        // دخّل الـ Access Tokens اللي عندك بالفعل
-        oauthswift.client.credential.oauthToken = "1970086716716265472-erVpAfgdRhETyVNrjjLUXcQRsiBVnU"
-        oauthswift.client.credential.oauthTokenSecret = "EObzMF7qWpqW6m6nhAEOMEt4iUtgGVSSLVwg8c3d7GtYl"
+        oauthswift = OAuth1Swift(
+            consumerKey:    "V7Ir272NnswSCCCZMxilc8Tlr",      // API Key
+            consumerSecret: "ibTcW3DbZE0iE9YK5L47Dj8gFjkOnA7WZDfA7lqCNfeydXQquT", // API Secret
+            requestTokenUrl: "https://api.twitter.com/oauth/request_token",
+            authorizeUrl:    "https://api.twitter.com/oauth/authorize",
+            accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
+        )
     }
-
-    func postTweet(text: String,completion: @escaping (_ json:String)->Void ) {
+    func setUserTokens(token: String, secret: String) {
+        oauthswift.client.credential.oauthToken = token
+        oauthswift.client.credential.oauthTokenSecret = secret
+    }
+    
+    // post tweet
+    func postTweet(text: String, completion: @escaping (Result<String, Error>) -> Void) {
         let url = "https://api.twitter.com/2/tweets"
+        print("🔑 token:", oauthswift.client.credential.oauthToken)
+        print("🔑 secret:", oauthswift.client.credential.oauthTokenSecret)
         oauthswift.client.post(
             url,
             parameters: ["text": text],
@@ -35,15 +38,31 @@ class TwitterClient {
             switch result {
             case .success(let response):
                 if let json = response.string {
-                    completion(json)
-                   
+                    completion(.success(json))
+                } else {
+                    completion(.failure(NSError(domain: "TwitterClient",
+                                                code: -1,
+                                                userInfo: [NSLocalizedDescriptionKey: "Empty response"])))
                 }
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
     }
-    
+
+    // login
+    func login(completion: @escaping (Bool, OAuthSwiftCredential) -> Void) {
+        
+        oauthswift.authorize(withCallbackURL: "twittercounter://auth/callback") { result in
+            switch result {
+            case .success(let (credential, _, _)):
+                completion(true, credential)
+                self.setUserTokens(token: credential.oauthToken, secret: credential.oauthTokenSecret)
+            case .failure:
+                completion(false, OAuthSwiftCredential(consumerKey: "", consumerSecret: ""))
+            }
+        }
+    }
     func twitterCount(_ text: String) -> Int {
         var count = 0
         let regex = try! NSRegularExpression(pattern: "https?://\\S+")
@@ -71,6 +90,6 @@ class TwitterClient {
     }
     
     
-
-
+    
+    
 }

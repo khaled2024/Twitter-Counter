@@ -7,9 +7,11 @@
 
 import UIKit
 class TwitterHomeViewModel{
-    
+    private let client: TwitterClient
+       init(client: TwitterClient) {
+           self.client = client
+       }
     private let twitterLimit = 280
-    private let client = TwitterClient()
     
     func countCharacters(_ text: String) -> (count: Int, remaining: Int, isValid: Bool) {
         let count = client.twitterCount(text)
@@ -27,8 +29,9 @@ class TwitterHomeViewModel{
     }
     
     func postTweet(text: String, completion: @escaping (Result<String, Error>) -> Void) {
-        client.postTweet(text: text) { json in
-            completion(.success(json))
+        client.postTweet(text: text) { result in
+            completion(result)
+            print(result)
         }
     }
 }

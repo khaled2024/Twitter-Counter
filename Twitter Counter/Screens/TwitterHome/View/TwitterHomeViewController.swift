@@ -21,12 +21,14 @@ class TwitterHomeViewController: UIViewController {
     @IBOutlet weak var typedLabel: UILabel!
     @IBOutlet weak var remainingLabel: UILabel!
     
-    let vm = TwitterHomeViewModel()
+    var twitterClient: TwitterClient!
+    var vm: TwitterHomeViewModel!
     var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        vm = TwitterHomeViewModel(client: twitterClient)
         setUp()
         twitterTextView.delegate = self
         updateCharacterCount("")
@@ -48,6 +50,8 @@ class TwitterHomeViewController: UIViewController {
         TypingTextView.layer.borderWidth = 1
         TypingTextView.layer.borderColor = UIColor(named: "ViewBorderColor")?.cgColor
         
+        self.navigationController?.navigationBar.isHidden = true
+        
         activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
@@ -57,7 +61,6 @@ class TwitterHomeViewController: UIViewController {
     
     private func postTweet(){
         guard let text = twitterTextView.text, !text.isEmpty else { return }
-        
         activityIndicator.startAnimating()
         vm.postTweet(text: text) { result in
             DispatchQueue.main.async { [weak self] in
@@ -67,10 +70,12 @@ class TwitterHomeViewController: UIViewController {
                 case .success(_):
                     self.showToast(message: "Posted Successfully🎉",
                                    bgColor: UIColor(named: "BlueColor")!)
+                    self.activityIndicator.stopAnimating()
                 case .failure(let error):
                     self.showToast(message: "Error: \(error.localizedDescription)",
                                    bgColor: .red)
                 }
+                self.activityIndicator.stopAnimating()
             }
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA9700182E841811003DD3AB /* TwitterLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9700172E841811003DD3AB /* TwitterLoginVC.swift */; };
 		EAD030C92E813AD8000F40A2 /* Extension+UiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD030C82E813AD8000F40A2 /* Extension+UiView.swift */; };
 		EAD030CB2E813C3B000F40A2 /* Extension+UiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD030CA2E813C3B000F40A2 /* Extension+UiViewController.swift */; };
 		EAD030CD2E813EA9000F40A2 /* Extension+UiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD030CC2E813EA9000F40A2 /* Extension+UiFont.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA9700172E841811003DD3AB /* TwitterLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLoginVC.swift; sourceTree = "<group>"; };
 		EAD030C82E813AD8000F40A2 /* Extension+UiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UiView.swift"; sourceTree = "<group>"; };
 		EAD030CA2E813C3B000F40A2 /* Extension+UiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UiViewController.swift"; sourceTree = "<group>"; };
 		EAD030CC2E813EA9000F40A2 /* Extension+UiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UiFont.swift"; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA9700162E8417F8003DD3AB /* TwitterLogin */ = {
+			isa = PBXGroup;
+			children = (
+				EA9700172E841811003DD3AB /* TwitterLoginVC.swift */,
+			);
+			path = TwitterLogin;
+			sourceTree = "<group>";
+		};
 		EAD030C72E813ABF000F40A2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +160,7 @@
 		EAD5C4B62E800B0C00EDE392 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EA9700162E8417F8003DD3AB /* TwitterLogin */,
 				EAD030DE2E8182F1000F40A2 /* TwitterHome */,
 			);
 			path = Screens;
@@ -246,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9700182E841811003DD3AB /* TwitterLoginVC.swift in Sources */,
 				EAD5C4AF2E800B0800EDE392 /* AppDelegate.swift in Sources */,
 				EAD030CB2E813C3B000F40A2 /* Extension+UiViewController.swift in Sources */,
 				EAD5C4B02E800B0800EDE392 /* SceneDelegate.swift in Sources */,

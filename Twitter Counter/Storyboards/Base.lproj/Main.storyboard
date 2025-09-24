@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ER2-Ij-XNo">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -13,7 +13,7 @@
         <!--Twitter Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TwitterHomeViewController" customModule="Twitter_Counter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TwitterHomeViewController" id="BYZ-38-t0r" customClass="TwitterHomeViewController" customModule="Twitter_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,13 +71,13 @@
                                 <rect key="frame" x="16" y="192" width="178" height="108"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Characters Typed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvc-eH-7He">
-                                        <rect key="frame" x="35.666666666666664" y="6.0000000000000018" width="106.66666666666669" height="20.666666666666671"/>
+                                        <rect key="frame" x="35.666666666666657" y="6" width="107" height="21"/>
                                         <fontDescription key="fontDescription" name="DINNextLTArabic-Medium" family="DIN Next LT Arabic" pointSize="14"/>
                                         <color key="textColor" name="TextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z3K-3z-H4D">
-                                        <rect key="frame" x="3" y="32.66666666666665" width="172" height="72.333333333333314"/>
+                                        <rect key="frame" x="3" y="33" width="172" height="72"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/280" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDQ-xo-rER">
                                                 <rect key="frame" x="51.999999999999993" y="17.000000000000004" width="68.333333333333314" height="38.333333333333343"/>
@@ -269,7 +269,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="69.565217391304358" y="-27.455357142857142"/>
+            <point key="canvasLocation" x="979.71014492753636" y="-27.455357142857142"/>
+        </scene>
+        <!--Twitter LoginVC-->
+        <scene sceneID="ZtO-8c-LVB">
+            <objects>
+                <viewController id="vva-Ci-6EJ" customClass="TwitterLoginVC" customModule="Twitter_Counter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2ln-CL-cEV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD3-9p-J7g">
+                                <rect key="frame" x="117" y="426" width="180" height="44"/>
+                                <color key="backgroundColor" name="BlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6iw-tC-9oM"/>
+                                    <constraint firstAttribute="width" constant="180" id="nTo-dQ-Rg7"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Login With Twitter">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="15" name="DINNextLTArabic-Medium"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginTapped:" destination="vva-Ci-6EJ" eventType="touchUpInside" id="rOT-yE-eak"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter logo" translatesAutoresizingMaskIntoConstraints="NO" id="U78-KS-gXF">
+                                <rect key="frame" x="132" y="236" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="aGa-do-dyY"/>
+                                    <constraint firstAttribute="height" constant="150" id="pFG-Yh-vMU"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hgP-jY-ywF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SD3-9p-J7g" firstAttribute="centerX" secondItem="2ln-CL-cEV" secondAttribute="centerX" id="LAM-9D-Le2"/>
+                            <constraint firstItem="SD3-9p-J7g" firstAttribute="centerY" secondItem="2ln-CL-cEV" secondAttribute="centerY" id="N2W-Wp-NiU"/>
+                            <constraint firstItem="U78-KS-gXF" firstAttribute="centerX" secondItem="2ln-CL-cEV" secondAttribute="centerX" id="xD9-qH-vAy"/>
+                            <constraint firstItem="SD3-9p-J7g" firstAttribute="top" secondItem="U78-KS-gXF" secondAttribute="bottom" constant="40" id="yfz-Ty-MiO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HaU-9O-cdg"/>
+                    <connections>
+                        <outlet property="twitterLoginBtn" destination="SD3-9p-J7g" id="CmP-9L-3BD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pau-zq-vH3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="184" y="-27"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8bV-aI-Obf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ER2-Ij-XNo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FOf-SM-icX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vva-Ci-6EJ" kind="relationship" relationship="rootViewController" id="zfL-nF-FAd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="emb-rT-9MB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-594.20289855072474" y="-27.455357142857142"/>
         </scene>
     </scenes>
     <resources>
