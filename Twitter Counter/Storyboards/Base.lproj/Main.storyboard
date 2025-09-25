@@ -339,18 +339,31 @@
                                     <constraint firstAttribute="height" constant="40" id="xxu-Lt-MMG"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTT-F1-U7i">
+                                <rect key="frame" x="138" y="483" width="138" height="36"/>
+                                <fontDescription key="fontDescription" name="DINNextLTArabic-Regular" family="DIN Next LT Arabic" pointSize="16"/>
+                                <color key="tintColor" name="BlueColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Skip Without Sign In"/>
+                                <connections>
+                                    <action selector="skipSignInTapped:" destination="vva-Ci-6EJ" eventType="touchUpInside" id="UzJ-SP-lvP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hgP-jY-ywF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="U78-KS-gXF" firstAttribute="top" secondItem="hgP-jY-ywF" secondAttribute="top" constant="148" id="XdV-dn-e4U"/>
+                            <constraint firstItem="hTT-F1-U7i" firstAttribute="top" secondItem="jtI-XS-wzj" secondAttribute="bottom" constant="15" id="Xjc-o8-VeM"/>
                             <constraint firstItem="jtI-XS-wzj" firstAttribute="centerX" secondItem="2ln-CL-cEV" secondAttribute="centerX" id="ZXo-v4-1Fq"/>
                             <constraint firstItem="jtI-XS-wzj" firstAttribute="centerY" secondItem="2ln-CL-cEV" secondAttribute="centerY" id="sKn-15-SWa"/>
                             <constraint firstItem="U78-KS-gXF" firstAttribute="centerX" secondItem="2ln-CL-cEV" secondAttribute="centerX" id="xD9-qH-vAy"/>
+                            <constraint firstItem="hTT-F1-U7i" firstAttribute="centerX" secondItem="hgP-jY-ywF" secondAttribute="centerX" id="zPH-mR-QQM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HaU-9O-cdg"/>
                     <connections>
+                        <outlet property="skipSignInBtn" destination="hTT-F1-U7i" id="dQ8-Cz-TSd"/>
                         <outlet property="twitterLoginBtn" destination="SD3-9p-J7g" id="CmP-9L-3BD"/>
                         <outlet property="twitterLoginView" destination="jtI-XS-wzj" id="CRQ-SN-itp"/>
                     </connections>

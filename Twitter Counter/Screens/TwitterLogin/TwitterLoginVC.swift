@@ -10,16 +10,20 @@ import UIKit
 class TwitterLoginVC: UIViewController {
     @IBOutlet weak var twitterLoginBtn: UIButton!
     
+    @IBOutlet weak var skipSignInBtn: UIButton!
     @IBOutlet weak var twitterLoginView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         twitterLoginView.layer.cornerRadius = 12
         
     }
+    @IBAction func skipSignInTapped(_ sender: UIButton) {
+        self.goToTwitterHomeVC()
+    }
     @IBAction func loginTapped(_ sender: UIButton) {
         twitterLogin()
     }
-   private func twitterLogin(){
+    private func twitterLogin(){
         TwitterClient.shared.login { success, credential in
             if success {
                 self.showToast(message: "Login Success ✅", bgColor: UIColor(named: "GreenColor")!)
